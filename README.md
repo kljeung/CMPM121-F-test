@@ -17,12 +17,27 @@ Overall, the four main disciplines all need to be associated with the name of sp
 With about one paragraph each (ideally including clickable hyperlinksLinks to an external site.)...
 
 Engine: Tell us about what engines, libraries, frameworks, and or platforms you intend to use, and give us a tiny bit of detail about why your team chose those. You are not committing to use this engine to finish the project, just sharing your initial thinking on engine choice. IMPORTANT: In order to satisfy the F1 Requirements, you'll need to choose something that doesn't already support high-level 3D rendering and physics (it must be something that requires you to bring those features in for yourself). If you don't know what to use, "the baselineLinks to an external site. web browser platform" is a good default choice.
+
+We plan to use Typescript or Javascript. This is due to our familiarity with using the language. One library we will be using is Three.js. This will allow us to use 3D. It comes with a lot of features like animation and physics. The demos show how robust the features are. 
+
 Language: Tell us programming languages (e.g. TypeScript) and data languages (e.g. JSON) you team expects to use and why you chose them. Presumably you’ll just be using the languages expected by your previously chosen engine/platform.
+
+The language we are using is Typescript or Javascript. HTML will be used as a support piece for marking up the browser page. JSON will potentially be used if we need to save any data. 
+
 Tools: Tell us about which tools you expect to use in the process of authoring your project. You might name the IDE for writing code, the image editor for creating visual assets, or the 3D editor you will use for building your scene. Again, briefly tell us why you made these choices. Maybe one of your teammates feels especially skilled in that tool or it represents something you all want to learn about.
+
+We will be using Github Cospaces as our IDE. This is due to to our experience with it in class and making it easier to work together. For art we will be using Asprite to create pixel art as this is the typical program. The Three.js editor will be used for building a 3D scene as this our planned library to use. 
+
 Generative AI: Tell us about your team's plan for using (or not using) tools based on generative AI, whether they are agentic or not. For example, will you be requiring team members to use or not use specific features of specific tools? Perhaps you plan use the autocomplete features in Github Copilot but not the agent mode. Maybe you will only use the agent mode under specific instructions for it to not make any direct modifications to your code, only giving the developer advice on how to proceed.
+
+Github Copilot will be used in various ways. The autocomplete feature is useful as it functions similarly to the autocomplete feature in Google Docs. We will also use the agent mode to review our code if there are potential fixes. The goal of using these is to make production faster through reducing the time with the behind the scenes stuff and instead the stuff on screen. 
+
 ## Outlook
 Give us a short section on your outlook on the project. You might cover one or more of these topics:
 
 What is your team hoping to accomplish that other teams might not attempt?
 What do you anticipate being the hardest or riskiest part of the project?
 What are you hoping to learn by approaching the project with the tools and materials you selected above?
+
+We will master using Cospaces together. We did it one time in section, but now we are doing it for a full project. Also, it will be a good opportunity to learn how to use libraries in this language. There seems to be a lot of possibilities with Three.js so we will see what we can accomplish.
+
