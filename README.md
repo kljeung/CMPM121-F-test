@@ -1,43 +1,39 @@
-# CMPM121-F
+# Devlog Entry - 11/14/2025
 
-## Introducing the team
-Either organizing by person or by role, tell us who will do what on your team. Your team should span at least the following four roles:
+# Roles:
 
-Tools Lead: This person will research alternative tools, identify good ones, and help every other team member set them up on their own machine in the best configuration for your project. This person might also establish your team’s coding style guidelines and help peers setup auto-formatting systems. This person should provide support for systems like source control and automated deployment (if appropriate to your team’s approach).
-Engine Lead: This person will research alternative engines, get buy-in from teammates on the choice, and teach peers how to use it if it is new to them. This might involve making small code examples outside of the main game project to teach others. The Engine Lead should also establish standards for which kinds of code should be organized into which folders of the project. They should try to propose software designs that insulate the rest of the team from many details of the underlying engine.
-Design Lead: This person will be responsible for setting the creative direction of the project, and establishing the look and feel of the game. They might make small art or code samples for others to help them contribute and maintain game content. Where the project might involve a domain-specific language, the Design Lead (who is still an engineer in this class) will lead the discussion as to what primitive elements the language needs to provide.
-Testing Lead:  This person will be responsible for both any automated testing that happens within the codebase as well as organizing and reporting on human playtests beyond the team.
-If your team has fewer than four people, some people will need to be the lead for multiple disciplines, but no person should be the lead for more than two disciplines.
+Reece will be the *Tools Lead* for this project. She will look at and select the necessary tools to facilitate the processes of source control and automated deployment of our game to the web. When needed, she will help team members set up and configure these systems on their machines. She will also look into tools to help with development such as linters and auto-formatting tools.
 
-If your team has more than four people, you are welcome to sub-divide the roles above into more specific roles or tag people as Assistant or Backup for one of the existing roles. Alternatively, you could invent new lead roles if your team is going to try a special game design technique (e.g. assign a Procgen Lead if your team is planning to use procedural generation).
+Beckham will be the *Engine Lead*. He is resourceful due to having various experiences in other engines. As a result he is able to figure out how to solve problems through constant experimentation. He’s had experience in handling big projects which should be helpful for keeping the codebase organized. He’s also taught students how to use various engines in the past.
 
-Overall, the four main disciplines all need to be associated with the name of specific people on your team.
+Kimi is the *Design Lead*. With her art experience, she will be responsible for establishing the art direction of the game. This will go in tandem with the creative direction of the game. This includes what kind of feelings or fantasy the game is trying to depict. She will also manipulate the HTML to give the game the appropriate UI based on the direction of the game, as well as creating new assets with [Procreate](https://procreate.com/). 
 
-## Tools and materials
-With about one paragraph each (ideally including clickable hyperlinksLinks to an external site.)...
+Vivian will be the *Testing Lead*. They will handle testing in various ways. One way is using Copilot to organize any problems in the code. Another is actually testing the game. This will be done via solo playtests but also finding others to playtest as well. This will be done a couple of times a week to make sure the codebase is constantly organized. 
+___
+# Main Creation Tools:
 
-Engine: Tell us about what engines, libraries, frameworks, and or platforms you intend to use, and give us a tiny bit of detail about why your team chose those. You are not committing to use this engine to finish the project, just sharing your initial thinking on engine choice. IMPORTANT: In order to satisfy the F1 Requirements, you'll need to choose something that doesn't already support high-level 3D rendering and physics (it must be something that requires you to bring those features in for yourself). If you don't know what to use, "the baselineLinks to an external site. web browser platform" is a good default choice.
+## Language and Libraries
 
-We plan to use Typescript or Javascript. This is due to our familiarity with using the language. One library we will be using is Three.js. This will allow us to use 3D. It comes with a lot of features like animation and physics. The demos show how robust the features are. 
+ While we are not committed to a particular engine, we plan to use TypeScript or JavaScript due to our familiarity with using the language. We will be using the [Three.js](http://Three.js) library to render 3D graphics and enable physics in our game. We will also be including HTML as a support piece for marking up the browser page and creation of UI elements. If we decide down the line that we need to save any data, we’ll be looking to save them in a JSON file for use.
 
-Language: Tell us programming languages (e.g. TypeScript) and data languages (e.g. JSON) you team expects to use and why you chose them. Presumably you’ll just be using the languages expected by your previously chosen engine/platform.
+## Tools
 
-The language we are using is Typescript or Javascript. HTML will be used as a support piece for marking up the browser page. JSON will potentially be used if we need to save any data. 
+We will be using [GitHub Codespaces](https://github.com/features/codespaces) as our IDE since we’ve already been working with it throughout our assignments. The [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) extension available in Codespaces also eases the difficulty of remote collaboration through allowing remote pair programming. For art, we will be using [Procreate](https://procreate.com/) to create original, hand-drawn assets. The [Three.js](http://Three.js) editor will be used for building a 3D scene as this our planned library to use. If we wish to include 3D assets, we will be utilizing [Blender](https://www.blender.org/) for modelling and rendering. For sound design we will be using [Reaper](https://www.reaper.fm/) to edit audio files needed for our game.
 
-Tools: Tell us about which tools you expect to use in the process of authoring your project. You might name the IDE for writing code, the image editor for creating visual assets, or the 3D editor you will use for building your scene. Again, briefly tell us why you made these choices. Maybe one of your teammates feels especially skilled in that tool or it represents something you all want to learn about.
+## AI Usage
 
-We will be using Github Cospaces as our IDE. This is due to to our experience with it in class and making it easier to work together. For art we will be using Asprite to create pixel art as this is the typical program. The Three.js editor will be used for building a 3D scene as this our planned library to use. 
+We’ll use Github Copilot’s autocomplete features on our code during development, as well as agent mode to review our code for smells and potential solutions. The use of these tools is intended to quicken the speed of development and produce higher-quality code that is easier to read and understand.
+___
+# Outlook
 
-Generative AI: Tell us about your team's plan for using (or not using) tools based on generative AI, whether they are agentic or not. For example, will you be requiring team members to use or not use specific features of specific tools? Perhaps you plan use the autocomplete features in Github Copilot but not the agent mode. Maybe you will only use the agent mode under specific instructions for it to not make any direct modifications to your code, only giving the developer advice on how to proceed.
+## What is your team hoping to accomplish that other teams might not attempt?
 
-Github Copilot will be used in various ways. The autocomplete feature is useful as it functions similarly to the autocomplete feature in Google Docs. We will also use the agent mode to review our code if there are potential fixes. The goal of using these is to make production faster through reducing the time with the behind the scenes stuff and instead the stuff on screen. 
+We are hoping to create a playable game mechanic that can be expanded upon. We hope that what we create in this project can be used as a framework for future physics-based puzzles that we may encounter in the future.
 
-## Outlook
-Give us a short section on your outlook on the project. You might cover one or more of these topics:
+## What do you anticipate being the hardest or riskiest part of the project?
 
-What is your team hoping to accomplish that other teams might not attempt?
-What do you anticipate being the hardest or riskiest part of the project?
-What are you hoping to learn by approaching the project with the tools and materials you selected above?
+The most difficult part of this project would probably be implementing physics in TypeScript, as it is mostly a language that handles 2D and web creation. Working in a language that each team member is familiar with makes it easier for each of us to understand, debug, and contribute, but the language has its own limitations as a 3D engine.
 
-We will master using Cospaces together. We did it one time in section, but now we are doing it for a full project. Also, it will be a good opportunity to learn how to use libraries in this language. There seems to be a lot of possibilities with Three.js so we will see what we can accomplish.
+## What are you hoping to learn by approaching the project with the tools and materials you selected above?
 
+We would like to gain more experience using [GitHub Codespaces](https://github.com/features/codespaces) together. We’ve done it before in section but now we’ll be collaborating for a full project. This will be a good opportunity to learn how to use libraries in TypeScript due to the wide range of possibilities that are made available with [Three.js](http://Three.js) such as 3D graphics and physics. 
