@@ -1,0 +1,47 @@
+name: Build and publish to main/docs
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish-docs:
+    runs-on: ubuntu-latest
+    # Prevent workflow from re-running on commits made by this workflow
+    if: "github.actor != 'github-actions[bot]'"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to main/docs
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -rf docs
+          mkdir -p docs
+          cp -r dist/* docs/
+          git add docs
+          if git diff --cached --quiet; then
+            echo "No changes to docs"
+          else
+            git commit -m "chore(docs): update site from workflow [skip ci]"
+            git push origin HEAD:main
+          fi
