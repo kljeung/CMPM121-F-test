@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
 
+# Grant the action explicit write permissions so the token can push to gh-pages.
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -13,6 +18,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # keep credentials available for further steps
+          persist-credentials: true
 
       - name: Use Node.js
         uses: actions/setup-node@v4
