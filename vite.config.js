@@ -1,0 +1,12 @@
+export default {
+  base: Deno.env.get("REPO_NAME") || "/project",
+  server: {
+    port: 3000,
+    open: true,
+  },
+  build: {
+    target: "baseline-widely-available",
+    outDir: "dist",
+    sourcemap: true,
+  },
+};
