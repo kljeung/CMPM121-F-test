@@ -42,11 +42,18 @@ The most difficult part of this project would probably be implementing physics i
 
 We would like to gain more experience using [GitHub Codespaces](https://github.com/features/codespaces) together. We’ve done it before in section but now we’ll be collaborating for a full project. This will be a good opportunity to learn how to use libraries in TypeScript due to the wide range of possibilities that are made available with [Three.js](http://Three.js) such as 3D graphics and physics.
 
-
-
 ---
-# Cospaces Notes
-Running browser: npm run dev
-Linting automation: npx eslint . --fix
-Formatting automation: npx prettier . --write
 
+# Cospaces Notes
+
+Running browser:
+
+npm run dev
+
+Linting automation:
+
+npx eslint . --fix
+
+Formatting automation:
+
+npx prettier . --write

@@ -2,6 +2,7 @@ import "./style.css";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import initAmmo from "./ammo-demo";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -24,13 +25,25 @@ scene.add(cube);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-//runs every frame like update in unity
+const clock = new THREE.Clock();
+let ammoDemo: any = null;
+
+initAmmo(scene).then((demo) => {
+  ammoDemo = demo;
+});
+
 function animate() {
   requestAnimationFrame(animate);
+
+  const delta = clock.getDelta();
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.005;
   cube.rotation.z += 0.01;
+
+  if (ammoDemo && typeof ammoDemo.update === "function") {
+    ammoDemo.update(delta);
+  }
 
   controls.update();
   renderer.render(scene, camera);

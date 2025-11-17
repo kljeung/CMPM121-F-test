@@ -2,7 +2,7 @@ name: Build and publish to main/docs
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm ci
