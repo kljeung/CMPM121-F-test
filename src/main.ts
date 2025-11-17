@@ -24,6 +24,7 @@ scene.add(cube);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+//runs every frame like update in unity
 function animate() {
   requestAnimationFrame(animate);
 
