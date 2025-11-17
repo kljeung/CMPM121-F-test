@@ -2,19 +2,21 @@
 
 # Roles:
 
-Reece will be the *Tools Lead* for this project. She will look at and select the necessary tools to facilitate the processes of source control and automated deployment of our game to the web. When needed, she will help team members set up and configure these systems on their machines. She will also look into tools to help with development such as linters and auto-formatting tools.
+Reece will be the _Tools Lead_ for this project. She will look at and select the necessary tools to facilitate the processes of source control and automated deployment of our game to the web. When needed, she will help team members set up and configure these systems on their machines. She will also look into tools to help with development such as linters and auto-formatting tools.
 
-Beckham will be the *Engine Lead*. He is resourceful due to having various experiences in other engines. As a result he is able to figure out how to solve problems through constant experimentation. He’s had experience in handling big projects which should be helpful for keeping the codebase organized. He’s also taught students how to use various engines in the past.
+Beckham will be the _Engine Lead_. He is resourceful due to having various experiences in other engines. As a result he is able to figure out how to solve problems through constant experimentation. He’s had experience in handling big projects which should be helpful for keeping the codebase organized. He’s also taught students how to use various engines in the past.
 
-Kimi is the *Design Lead*. With her art experience, she will be responsible for establishing the art direction of the game. This will go in tandem with the creative direction of the game. This includes what kind of feelings or fantasy the game is trying to depict. She will also manipulate the HTML to give the game the appropriate UI based on the direction of the game, as well as creating new assets with [Procreate](https://procreate.com/). 
+Kimi is the _Design Lead_. With her art experience, she will be responsible for establishing the art direction of the game. This will go in tandem with the creative direction of the game. This includes what kind of feelings or fantasy the game is trying to depict. She will also manipulate the HTML to give the game the appropriate UI based on the direction of the game, as well as creating new assets with [Procreate](https://procreate.com/).
 
-Vivian will be the *Testing Lead*. They will handle testing in various ways. One way is using Copilot to organize any problems in the code. Another is actually testing the game. This will be done via solo playtests but also finding others to playtest as well. This will be done a couple of times a week to make sure the codebase is constantly organized. 
-___
+Vivian will be the _Testing Lead_. They will handle testing in various ways. One way is using Copilot to organize any problems in the code. Another is actually testing the game. This will be done via solo playtests but also finding others to playtest as well. This will be done a couple of times a week to make sure the codebase is constantly organized.
+
+---
+
 # Main Creation Tools:
 
 ## Language and Libraries
 
- While we are not committed to a particular engine, we plan to use TypeScript or JavaScript due to our familiarity with using the language. We will be using the [Three.js](http://Three.js) library to render 3D graphics and enable physics in our game. We will also be including HTML as a support piece for marking up the browser page and creation of UI elements. If we decide down the line that we need to save any data, we’ll be looking to save them in a JSON file for use.
+While we are not committed to a particular engine, we plan to use TypeScript or JavaScript due to our familiarity with using the language. We will be using the [Three.js](http://Three.js) library to render 3D graphics and enable physics in our game. We will also be including HTML as a support piece for marking up the browser page and creation of UI elements. If we decide down the line that we need to save any data, we’ll be looking to save them in a JSON file for use.
 
 ## Tools
 
@@ -23,7 +25,9 @@ We will be using [GitHub Codespaces](https://github.com/features/codespaces) as 
 ## AI Usage
 
 We’ll use Github Copilot’s autocomplete features on our code during development, as well as agent mode to review our code for smells and potential solutions. The use of these tools is intended to quicken the speed of development and produce higher-quality code that is easier to read and understand.
-___
+
+---
+
 # Outlook
 
 ## What is your team hoping to accomplish that other teams might not attempt?
@@ -36,4 +40,13 @@ The most difficult part of this project would probably be implementing physics i
 
 ## What are you hoping to learn by approaching the project with the tools and materials you selected above?
 
-We would like to gain more experience using [GitHub Codespaces](https://github.com/features/codespaces) together. We’ve done it before in section but now we’ll be collaborating for a full project. This will be a good opportunity to learn how to use libraries in TypeScript due to the wide range of possibilities that are made available with [Three.js](http://Three.js) such as 3D graphics and physics. 
+We would like to gain more experience using [GitHub Codespaces](https://github.com/features/codespaces) together. We’ve done it before in section but now we’ll be collaborating for a full project. This will be a good opportunity to learn how to use libraries in TypeScript due to the wide range of possibilities that are made available with [Three.js](http://Three.js) such as 3D graphics and physics.
+
+
+
+---
+# Cospaces Notes
+Running browser: npm run dev
+Linting automation: npx eslint . --fix
+Formatting automation: npx prettier . --write
+
