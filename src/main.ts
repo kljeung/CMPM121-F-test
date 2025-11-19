@@ -3,7 +3,6 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import initAmmo from "./ammo-demo";
-import Ammo from "ammo.js";
 import loadAmmo from "./physics/ammo-loader";
 
 const AmmoLib = await loadAmmo();
@@ -21,7 +20,7 @@ document.body.appendChild(renderer.domElement);
 
 camera.position.z = 3;
 
-//const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 const clock = new THREE.Clock();
 let ammoDemo: any = null;
@@ -116,7 +115,7 @@ function animate() {
     ammoDemo.update(delta);
   }
 
-  //controls.update();
+  controls.update();
   applyMovement();
   checkWinCondition();
   renderer.render(scene, camera);
