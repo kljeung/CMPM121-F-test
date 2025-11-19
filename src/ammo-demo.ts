@@ -4,7 +4,6 @@ import * as THREE from "three";
 import loadAmmo from "./physics/ammo-loader";
 import { createPhysicsWorld } from "./physics/world";
 import { createBoxBody } from "./physics/body-factory";
-import Ammo from "ammo.js";
 
 export default async function initAmmo(scene: THREE.Scene) {
   const AmmoLib = await loadAmmo();
