@@ -13,12 +13,13 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000,
 );
+const CAMERA_ZOOM = 4;
+camera.position.z = CAMERA_ZOOM;
+
 const renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-
-camera.position.z = 3;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -65,6 +66,7 @@ window.addEventListener("keyup", (event) => {
   }
 });
 
+let WIN: boolean = false;
 function checkWinCondition() {
   if (!ammoDemo) return;
   const boxMesh = ammoDemo.bodies[0].mesh;
@@ -73,11 +75,14 @@ function checkWinCondition() {
   const boxY = boxMesh.position.y;
   const boxZ = boxMesh.position.z;
 
-  //potentially can change this to dyanmic size of the barriers
+  // potentially can change this to dynamic size of the barriers
   const insideX = boxX > -1 && boxX < 1;
   const insideZ = boxZ > -1 && boxZ < 1;
 
-  if (insideX && insideZ && boxY < 1) {
+  if (!WIN && insideX && insideZ && boxY < 1) {
+    WIN = true;
+    const player: THREE.MeshBasicMaterial = ammoDemo.bodies[0].mesh.material;
+    player.color.setHex(0x00ff00);
     console.log("WIN!");
   }
 }
@@ -106,7 +111,7 @@ function applyMovement() {
   body.applyCentralImpulse(impulse);
 }
 
-//like update in unity
+// like update in unity
 function animate() {
   requestAnimationFrame(animate);
   const delta = clock.getDelta();

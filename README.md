@@ -44,7 +44,7 @@ We would like to gain more experience using [GitHub Codespaces](https://github.c
 
 ---
 
-# Cospaces Notes
+# Codespaces Notes
 
 Running browser:
 

@@ -1,4 +1,4 @@
-//SCENE IS TEMPORARY-> ONLY USED TO SEE IF AMMO.JS IS WORKING
+// SCENE IS TEMPORARY! ONLY USED TO SEE IF AMMO.JS IS WORKING
 
 import * as THREE from "three";
 import loadAmmo from "./physics/ammo-loader";
@@ -81,7 +81,7 @@ export default async function initAmmo(scene: THREE.Scene) {
 
   makeGoal(0, 0.1, 0);
 
-  //stuff other class can access
+  // stuff other classes can access
   return {
     physicsWorld,
     bodies,
