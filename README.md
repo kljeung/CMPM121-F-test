@@ -18,7 +18,7 @@ While we are not committed to a particular engine, we plan to use TypeScript or 
 
 ### Tools
 
-We will be using [GitHub Codespaces](https://github.com/features/codespaces) as our IDE since we’ve already been working with it throughout our assignments. The [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) extension available in Codespaces also eases the difficulty of remote collaboration through allowing remote pair programming. For art, we will be using [Procreate](https://procreate.com/) to create original, hand-drawn assets. The [Three.js](http://Three.js) editor will be used for building a 3D scene as this our planned library to use. If we wish to include 3D assets, we will be utilizing [Blender](https://www.blender.org/) for modeling and rendering. For sound design we will be using [Reaper](https://www.reaper.fm/) to edit audio files needed for our game.
+We will be using [GitHub Codespaces](https://github.com/features/codespaces) as our IDE since we’ve already been working in the space for our assignments. The [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) extension available in Codespaces also eases the difficulty of remote collaboration by allowing for remote pair programming. For art, we will be using [Procreate](https://procreate.com/) to create original, hand-drawn assets. We plan to use the [Three.js](http://Three.js) editor for building 3D scenes, and [Blender](https://www.blender.org/) for modeling/rendering any custom 3D assets as needed. For sound design, we will use [Reaper](https://www.reaper.fm/) to edit any necessary audio files for our game.
 
 ### AI Usage
 
