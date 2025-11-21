@@ -76,10 +76,11 @@ function checkWinCondition() {
   const boxZ = boxMesh.position.z;
 
   // potentially can change this to dynamic size of the barriers
-  const insideX = boxX > -1 && boxX < 1;
-  const insideZ = boxZ > -1 && boxZ < 1;
+  const insideX = boxX > 0 && boxX < 0.1;
+  const insideZ = boxZ > 0 && boxZ < 0.1;
 
   if (!WIN && insideX && insideZ && boxY < 1) {
+    console.log(boxX, boxZ);
     WIN = true;
     const player: THREE.MeshBasicMaterial = ammoDemo.bodies[0].mesh.material;
     player.color.setHex(0x00ff00);
@@ -92,8 +93,13 @@ function applyMovement() {
 
   const body = ammoDemo.bodies[0].body;
 
+  const boxMesh = ammoDemo.bodies[0].mesh;
+  const boxX = boxMesh.position.x;
+  const boxY = boxMesh.position.y;
+  const boxZ = boxMesh.position.z;
+  console.log(boxX, boxZ);
   const impulse = new AmmoLib.btVector3(0, 0, 0);
-  const moveSpeed = 1;
+  const moveSpeed = 0.5;
 
   if (input.forward) {
     impulse.op_add(new AmmoLib.btVector3(0, moveSpeed, 0));

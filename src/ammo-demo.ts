@@ -34,7 +34,7 @@ export default async function initAmmo(scene: THREE.Scene) {
 
   // Dynamic box (Ammo)
   const boxHalf = new AmmoLib.btVector3(boxSize / 2, boxSize / 2, boxSize / 2);
-  const boxPos = new AmmoLib.btVector3(0, 2, 0);
+  const boxPos = new AmmoLib.btVector3(2, 2, 0);
   const box = createBoxBody(AmmoLib, boxHalf, boxPos, 1);
   boxMesh.userData.physicsBody = box.body;
   physicsWorld.addRigidBody(box.body);
