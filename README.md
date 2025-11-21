@@ -1,11 +1,3 @@
-# Table of Contents
-
-- ### [Devlog #1 - 11/14/2025](https://github.com/BeReyes1/CMPM121-F#devlog-1---11142025)
-- ### [Devlog #2 - 11/21/2025](https://github.com/BeReyes1/CMPM121-F#devlog-2---11212025)
-- ### [Dev Commands](https://github.com/BeReyes1/CMPM121-F#dev-commands)
-
----
-
 # Devlog #1 - 11/14/2025
 
 ## Roles:
