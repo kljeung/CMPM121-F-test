@@ -95,7 +95,6 @@ function applyMovement() {
 
   const boxMesh = ammoDemo.bodies[0].mesh;
   const boxX = boxMesh.position.x;
-  const boxY = boxMesh.position.y;
   const boxZ = boxMesh.position.z;
   console.log(boxX, boxZ);
   const impulse = new AmmoLib.btVector3(0, 0, 0);
