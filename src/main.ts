@@ -5,34 +5,75 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import initAmmo from "./ammo-demo";
 import loadAmmo from "./physics/ammo-loader";
 
-const AmmoLib = await loadAmmo();
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000,
-);
+type InputState = {
+  forward: boolean;
+  backward: boolean;
+  left: boolean;
+  right: boolean;
+};
+
+type AmmoBodyEntry = {
+  mesh: THREE.Mesh;
+  body: any; 
+};
+
+type AmmoDemo = {
+  bodies: AmmoBodyEntry[];
+  update: (delta: number) => void;
+};
+
+const CAMERA_FOV = 75;
+const CAMERA_NEAR = 0.1;
+const CAMERA_FAR = 1000;
 const CAMERA_ZOOM = 4;
+
+const MOVE_SPEED = 0.5;
+
+const WIN_ZONE_MIN = 0;
+const WIN_ZONE_MAX = 0.1;
+const WIN_MAX_HEIGHT = 1;
+
+const DEBUG_LOG_POSITIONS = false;
+
+const AmmoLib = await loadAmmo();
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  CAMERA_FOV,
+  window.innerWidth / window.innerHeight,
+  CAMERA_NEAR,
+  CAMERA_FAR,
+);
 camera.position.z = CAMERA_ZOOM;
 
 const renderer = new THREE.WebGLRenderer();
-
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const clock = new THREE.Clock();
-let ammoDemo: any = null;
 
-initAmmo(scene).then((demo) => {
-  ammoDemo = demo;
-});
+let ammoDemo: AmmoDemo | null = null;
+let hasWon = false;
 
-const input = { forward: false, backward: false, left: false, right: false };
+const input: InputState = {
+  forward: false,
+  backward: false,
+  left: false,
+  right: false,
+};
 
-window.addEventListener("keydown", (event) => {
+const movementImpulse = new AmmoLib.btVector3(0, 0, 0);
+
+function getPlayer(): AmmoBodyEntry | null {
+  if (!ammoDemo || !ammoDemo.bodies || ammoDemo.bodies.length === 0) return null;
+  return ammoDemo.bodies[0];
+}
+
+function handleKeyDown(event: KeyboardEvent) {
   switch (event.code) {
     case "KeyW":
       input.forward = true;
@@ -47,9 +88,9 @@ window.addEventListener("keydown", (event) => {
       input.right = true;
       break;
   }
-});
+}
 
-window.addEventListener("keyup", (event) => {
+function handleKeyUp(event: KeyboardEvent) {
   switch (event.code) {
     case "KeyW":
       input.forward = false;
@@ -64,61 +105,71 @@ window.addEventListener("keyup", (event) => {
       input.right = false;
       break;
   }
-});
-
-let WIN: boolean = false;
-function checkWinCondition() {
-  if (!ammoDemo) return;
-  const boxMesh = ammoDemo.bodies[0].mesh;
-
-  const boxX = boxMesh.position.x;
-  const boxY = boxMesh.position.y;
-  const boxZ = boxMesh.position.z;
-
-  // potentially can change this to dynamic size of the barriers
-  const insideX = boxX > 0 && boxX < 0.1;
-  const insideZ = boxZ > 0 && boxZ < 0.1;
-
-  if (!WIN && insideX && insideZ && boxY < 1) {
-    console.log(boxX, boxZ);
-    WIN = true;
-    const player: THREE.MeshBasicMaterial = ammoDemo.bodies[0].mesh.material;
-    player.color.setHex(0x00ff00);
-    console.log("WIN!");
-  }
 }
 
 function applyMovement() {
-  if (!ammoDemo) return;
+  const player = getPlayer();
+  if (!player) return;
 
-  const body = ammoDemo.bodies[0].body;
+  const { body, mesh } = player;
 
-  const boxMesh = ammoDemo.bodies[0].mesh;
-  const boxX = boxMesh.position.x;
-  const boxZ = boxMesh.position.z;
-  console.log(boxX, boxZ);
-  const impulse = new AmmoLib.btVector3(0, 0, 0);
-  const moveSpeed = 0.5;
+  if (DEBUG_LOG_POSITIONS) {
+    console.log("Player position:", mesh.position.x, mesh.position.y, mesh.position.z);
+  }
+
+  movementImpulse.setValue(0, 0, 0);
 
   if (input.forward) {
-    impulse.op_add(new AmmoLib.btVector3(0, moveSpeed, 0));
+    movementImpulse.op_add(new AmmoLib.btVector3(0, MOVE_SPEED, 0));
   }
   if (input.backward) {
-    impulse.op_add(new AmmoLib.btVector3(0, -moveSpeed, 0));
+    movementImpulse.op_add(new AmmoLib.btVector3(0, -MOVE_SPEED, 0));
   }
   if (input.left) {
-    impulse.op_add(new AmmoLib.btVector3(-moveSpeed, 0, 0));
+    movementImpulse.op_add(new AmmoLib.btVector3(-MOVE_SPEED, 0, 0));
   }
   if (input.right) {
-    impulse.op_add(new AmmoLib.btVector3(moveSpeed, 0, 0));
+    movementImpulse.op_add(new AmmoLib.btVector3(MOVE_SPEED, 0, 0));
   }
 
-  body.applyCentralImpulse(impulse);
+  body.applyCentralImpulse(movementImpulse);
 }
 
-// like update in unity
+function checkWinCondition() {
+  const player = getPlayer();
+  if (!player || hasWon) return;
+
+  const { mesh } = player;
+  const { x, y, z } = mesh.position;
+
+  const insideX = x > WIN_ZONE_MIN && x < WIN_ZONE_MAX;
+  const insideZ = z > WIN_ZONE_MIN && z < WIN_ZONE_MAX;
+
+  if (insideX && insideZ && y < WIN_MAX_HEIGHT) {
+    hasWon = true;
+
+    const material = mesh.material as THREE.MeshBasicMaterial | THREE.Material | THREE.Material[];
+    if (Array.isArray(material)) {
+      material.forEach((mat) => {
+        const basic = mat as THREE.MeshBasicMaterial;
+        if ((basic as any).color) {
+          basic.color.setHex(0x00ff00);
+        }
+      });
+    } else {
+      const basic = material as THREE.MeshBasicMaterial;
+      if ((basic as any).color) {
+        basic.color.setHex(0x00ff00);
+      }
+    }
+
+    console.log("WIN!", x, z);
+  }
+}
+
 function animate() {
   requestAnimationFrame(animate);
+
   const delta = clock.getDelta();
 
   if (ammoDemo && typeof ammoDemo.update === "function") {
@@ -128,7 +179,21 @@ function animate() {
   controls.update();
   applyMovement();
   checkWinCondition();
+
   renderer.render(scene, camera);
 }
+
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", handleKeyUp);
+
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+initAmmo(scene).then((demo) => {
+  ammoDemo = demo as AmmoDemo;
+});
 
 animate();
