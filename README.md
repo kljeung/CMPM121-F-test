@@ -18,7 +18,7 @@ While we are not committed to a particular engine, we plan to use TypeScript or 
 
 ### Tools
 
-We will be using Github Codespaces as our IDE since we’ve already been working with it throughout our assignments. The Live Share extension available in Codespaces also eases the difficulty of remote collaboration through allowing remote pair programming. For art, we will be using Procreate to create original, hand-drawn assets. The Three.js editor will be used for building a 3D scene as this our planned library to use. If we wish to include 3D assets, we will be utilizing Blender for modelling and rendering. For sound design we will be using Reaper to edit audio files needed for our game.
+We will be using [GitHub Codespaces](https://github.com/features/codespaces) as our IDE since we’ve already been working with it throughout our assignments. The [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) extension available in Codespaces also eases the difficulty of remote collaboration through allowing remote pair programming. For art, we will be using [Procreate](https://procreate.com/) to create original, hand-drawn assets. The [Three.js](http://Three.js) editor will be used for building a 3D scene as this our planned library to use. If we wish to include 3D assets, we will be utilizing [Blender](https://www.blender.org/) for modeling and rendering. For sound design we will be using [Reaper](https://www.reaper.fm/) to edit audio files needed for our game.
 
 ### AI Usage
 
@@ -58,15 +58,15 @@ We are using ammo.js as our third-party physics simulation library. This allows 
 
 ### Simple Physics-based Puzzle
 
-The playable prototype has a simple physics-based puzzle requiring the player to move a cube into a goal area. A condition check that will detect when the player cube hits the target hole.
+The initial playable prototype has a simple physics-based puzzle requiring the player to move a cube into a goal area. A condition check that will detect when the player cube hits the goal.
 
 ### Player Controls
 
-The player is able to exert control over the game through WASD controls. These apply a force in a direction with W/S being on the Y axis and A/D being on the X axis. The cube is always falling so the player must keep that in mind when applying forces.
+The player is able to exert control over the game through WASD controls which apply a force in their assigned direction. W/S moves the player along the Y axis, and A/D moves the player along on the X axis.
 
 ### Visual Win/Loss States
 
-The player cube starts red, then turns green once they complete the puzzle.
+The player cube starts red, then turns green once the player completes the puzzle.
 
 ### Pre-commit Automation
 
@@ -74,11 +74,11 @@ The codebase uses Prettier as before-commit automation which consistently format
 
 ### Post-push Automation
 
-The codebase automatically pushes the project to GitHub Pages. This is done through the Github Actions bot which automatically updates the Github Page after pushing our changes. This method requires us to remove all errors of the code before deployment, otherwise, it will not push. There were a few moments where we kept unused imports, preventing the page from publishing until the errors were resolved.
+We used GitHub Actions to automatically push our changes and deploy our project to GitHub Pages. This method requires us to remove all errors of the code before deployment. Otherwise, it will not push. There were a few moments where we kept unused imports, preventing the page from getting updated and re-published until those errors were resolved.
 
 ## Reflection
 
-Probably use another physics library? I can't find a way to detect collisions with ammo.js.
+Most of our time was spent trying to understand the library enough to meet the requirements for this initial version. We had trouble trying to detect collisions with ammo.js, so we might be looking into using a different physics library. Beckham did most of the engines and tools work on his own this week, so we'll properly discuss a schedule and assign tasks for this coming week to prevent this kind of build up from happening again. (Thank you and sorry, Beckham!)
 
 ---
 
